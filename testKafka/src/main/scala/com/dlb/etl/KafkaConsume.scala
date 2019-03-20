@@ -62,7 +62,6 @@ object KafkaConsume {
               rdd.saveAsTextFile("hdfs://hadoop01:9000/jsonDatas/"+System.currentTimeMillis())
           }
       })
-
         input.foreachRDD(rdd => {
           if (!rdd.isEmpty()) {
             val spark1 = SparkSession.builder.config(sparkContext.getConf).getOrCreate
@@ -151,7 +150,6 @@ object KafkaConsume {
                     }).saveAsHadoopDataset(jobConf)
           }
         })
-
     ssc.start()
     ssc.awaitTermination()
   }
